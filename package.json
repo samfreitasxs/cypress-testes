@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cypress": "cypress open"
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open"
   },
   "keywords": [],
   "author": "Samuel Freitas",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^10.11.0"
+    "@uuv/cypress": "^1.4.3",
+    "cypress": "^10.11.0",
+    "mochawesome": "^7.1.3"
   }
 }
