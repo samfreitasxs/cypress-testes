@@ -3,7 +3,7 @@ name: cross browser end-to-end testing 🚀
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
   pull_request:
     types: [opened, reopened]
   schedule:
