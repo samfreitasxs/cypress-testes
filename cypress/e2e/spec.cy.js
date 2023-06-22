@@ -12,6 +12,12 @@ describe ('Testing the homepage of the Testing with Cypress', () => {
           .should('be.visible')
           .and('contains.text', 'Add Product')
           .click()
+          .get('[data-testid="product-textbox"]')
+          .type('Product 2')
+          .get('[data-testid="price-textbox"]')
+          .type('15')
+          .get('[data-testid="submit-form"]')
+          .click()
     })
     it('Verify Practice', () => {
         cy
@@ -19,6 +25,11 @@ describe ('Testing the homepage of the Testing with Cypress', () => {
           .should('be.visible')
           .and('contains.text', 'Practice')
           .click()
+          .get('[data-testid="practice-general"]')
+          .click()
+          .get('[data-testid="basic-click"]')
+          .click()
+
     })
     it('Verify Login', () => {
         cy
