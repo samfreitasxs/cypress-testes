@@ -5,9 +5,3 @@ videos
 #@uuv
 /uuv/reports
 /uuv/.uuv-features-gen
-.DS_Store
-cypress.env.json
-cypress/downloads/
-cypress/screenshots/
-cypress/videos/
-node_modules/
