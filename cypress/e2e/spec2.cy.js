@@ -20,5 +20,12 @@ describe ('Testing the homepage of the Testing with Cypress', () => {
           .and('contains.text', 'Practice')
           .click()
     })
+    it('Verify Practice', () => {
+        cy
+          .get('[data-testid="navbar-practice"]')
+          .should('be.visible')
+          .and('contains.text', 'Practice')
+          .click()
+    })
 
 })
