@@ -8,6 +8,8 @@ describe('Testes das APIs FakeRestAPI v1', () => {
         })
     })
   
+
+    
     it('Deve obter a lista de livros', () => {
       cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/Books')
         .then((response) => {
