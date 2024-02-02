@@ -35,6 +35,7 @@ describe('Testes das APIs FakeRestAPI v1', () => {
         })
     })
   
+    
     it('Deve obter a lista de usuários', () => {
       cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/Users')
         .then((response) => {
