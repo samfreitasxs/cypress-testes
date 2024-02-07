@@ -10,6 +10,7 @@ describe ('Testing the homepage of the Testing with Cypress', () => {
         cy
           .get('[data-testid="navbar-addproduct"]')
           .should('be.visible')
+          .intercept()
           .and('contains.text', 'Add Product')
           .click()
           .get('[data-testid="product-textbox"]')
