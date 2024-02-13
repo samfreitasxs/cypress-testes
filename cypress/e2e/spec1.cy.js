@@ -42,7 +42,5 @@ describe ('Testing the homepage of the Testing with Cypress', () => {
           .get('[data-testid="password-textbox"]').type('123')
           .get('[data-testid="login-button"]').click()
           cy.get('.error')
-          
     })
-
 })
