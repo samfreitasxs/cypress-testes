@@ -32,6 +32,7 @@ describe ('Testing the homepage of the Testing with Cypress', () => {
           .click()
 
     })
+    
     it('Verify Login', () => {
         cy
           .get('[data-testid="navbar-login"]')
