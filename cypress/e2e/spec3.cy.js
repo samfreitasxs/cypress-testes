@@ -1,4 +1,4 @@
-describe('Testes das APIs FakeRestAPI v1', () => {
+describe('Testes da API API v1', () => {
     let activities = []
     let books = []
     let coverPhotos = []

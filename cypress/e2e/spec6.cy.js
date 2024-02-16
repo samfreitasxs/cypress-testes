@@ -1,4 +1,4 @@
-describe('Testes das APIs FakeRestAPI v1', () => {
+describe('Testes da API API v4', () => {
     it('Deve obter a lista de atividades', () => {
       cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/Activities')
         .then((response) => {

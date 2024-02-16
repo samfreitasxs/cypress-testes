@@ -1,47 +1,25 @@
-/// <reference types="cypress" />
+describe('Testes da API de Cores', () => {
+  it('Deve retornar uma cor com o nome "fuchsia rose"', () => {
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('status')
+      .should('equal', 200) // Verifica se a resposta da API é bem-sucedida
 
-describe ('Testing the homepage of the Testing with Cypress', () => {
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('body.data')
+      .should('have.property', 'name', 'fuchsia rose') // Verifica se a cor retornada tem o nome "fuchsia rose"
+  })
 
-    beforeEach(() => {
-        cy.visit('https://commitquality.com/')
-    });
+  it('Deve conter a URL de suporte e um texto de apoio', () => {
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('status')
+      .should('equal', 200) // Verifica se a resposta da API é bem-sucedida
 
-    it('Verify Add Product', () => {
-        cy
-          .get('[data-testid="navbar-addproduct"]')
-          .should('be.visible')
-          .intercept()
-          .and('contains.text', 'Add Product')
-          .click()
-          .get('[data-testid="product-textbox"]')
-          .type('Product 2')
-          .get('[data-testid="price-textbox"]')
-          .type('15')
-          .get('[data-testid="submit-form"]')
-          .click()
-    })
-    it('Verify Practice', () => {
-        cy
-          .get('[data-testid="navbar-practice"]')
-          .should('be.visible')
-          .and('contains.text', 'Practice')
-          .click()
-          .get('[data-testid="practice-general"]')
-          .click()
-          .get('[data-testid="basic-click"]')
-          .click()
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('body.support')
+      .should('have.property', 'url') // Verifica se a resposta contém uma URL de suporte
 
-    })
-    
-    it('Verify Login', () => {
-        cy
-          .get('[data-testid="navbar-login"]')
-          .should('be.visible')
-          .and('contains.text', 'Login')
-          .click()
-          .get('[data-testid="username-textbox"]').type('samuel')
-          .get('[data-testid="password-textbox"]').type('123')
-          .get('[data-testid="login-button"]').click()
-          cy.get('.error')
-    })
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('body.support')
+      .should('have.property', 'text') // Verifica se a resposta contém um texto de apoio
+  })
 })
