@@ -1,63 +1,25 @@
-describe('Testes das APIs FakeRestAPI v1', () => {
-    it('Deve obter a lista de atividades', () => {
-      cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/Activities')
-        .then((response) => {
-          expect(response.status).to.eq(200)
-          expect(response.body).to.be.an('array')
-          expect(response.body.length).to.be.greaterThan(0)
-        })
-    })
-    it('Deve obter a lista de atividades', () => {
-      cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/Activities')
-        .then((response) => {
-          expect(response.status).to.eq(200)
-          expect(response.body).to.be.an('array')
-          expect(response.body.length).to.be.greaterThan(0)
-        })
-    })
+describe('Testes da API de Cores', () => {
+  it('Deve retornar uma cor com o nome "fuchsia rose"', () => {
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('status')
+      .should('equal', 200) // Verifica se a resposta da API é bem-sucedida
 
-    
-    it('Deve obter a lista de livros', () => {
-      cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/Books')
-        .then((response) => {
-          expect(response.status).to.eq(200)
-          expect(response.body).to.be.an('array')
-          expect(response.body.length).to.be.greaterThan(0)
-        })
-    })
-  
-    it('Deve obter a lista de capas de livros', () => {
-      cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/CoverPhotos')
-        .then((response) => {
-          expect(response.status).to.eq(200)
-          expect(response.body).to.be.an('array')
-          expect(response.body.length).to.be.greaterThan(0)
-        })
-    })
-  
-    it('Deve obter a lista de usuários', () => {
-      cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/Users')
-        .then((response) => {
-          expect(response.status).to.eq(200)
-          expect(response.body).to.be.an('array')
-          expect(response.body.length).to.be.greaterThan(0)
-        })
-    })
-    it('Deve obter a lista de usuários', () => {
-      cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/Users')
-        .then((response) => {
-          expect(response.status).to.eq(200)
-          expect(response.body).to.be.an('array')
-          expect(response.body.length).to.be.greaterThan(0)
-        })
-    })
-    it('Deve obter a lista de usuários', () => {
-      cy.request('GET', 'http://fakerestapi.azurewebsites.net/api/v1/Users')
-        .then((response) => {
-          expect(response.status).to.eq(200)
-          expect(response.body).to.be.an('array')
-          expect(response.body.length).to.be.greaterThan(0)
-        })
-    })
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('body.data')
+      .should('have.property', 'name', 'fuchsia rose') // Verifica se a cor retornada tem o nome "fuchsia rose"
   })
-  
+
+  it('Deve conter a URL de suporte e um texto de apoio', () => {
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('status')
+      .should('equal', 200) // Verifica se a resposta da API é bem-sucedida
+
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('body.support')
+      .should('have.property', 'url') // Verifica se a resposta contém uma URL de suporte
+
+    cy.request('https://reqres.in/api/unknown/2')
+      .its('body.support')
+      .should('have.property', 'text') // Verifica se a resposta contém um texto de apoio
+  })
+})
