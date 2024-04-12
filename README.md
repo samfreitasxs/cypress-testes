@@ -29,8 +29,6 @@ A step by step series of examples that tell you how to get a development env run
 
 Say what the step will be
 
-
-
 ```
 Give the example
 ```
@@ -45,4 +43,5 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Usage <a name = "usage"></a>
 
+Add notes about how to use the system.
 Add notes about how to use the system.
