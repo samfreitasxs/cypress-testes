@@ -97,5 +97,17 @@ describe('Testes da API API v2', () => {
           })
       }
     })
+    
+    it('Deve obter os detalhes de uma capa de livro específica', () => {
+      if (coverPhotos.length > 0) {
+        const coverPhotoId = coverPhotos[0].id
+  
+        cy.request(`GET`, `http://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/${coverPhotoId}`)
+          .then((response) => {
+            expect(response.status).to.eq(200)
+            expect(response.body).to.have.property('id', coverPhotoId)
+          })
+      }
+    })
   })
   
