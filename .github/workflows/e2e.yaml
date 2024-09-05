@@ -3,16 +3,16 @@ name: cross browser end-to-end testing 🚀
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
   pull_request:
     types: [opened, reopened]
   schedule:
-    - cron: '0 2 * * FRI'
+    - cron: '0 8 * * *'
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 20
 
     steps:
       - name: Checkout 🛎
