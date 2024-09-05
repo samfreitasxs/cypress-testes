@@ -1,31 +1,28 @@
-name: 🚀cross browser end-to-end testing 🚀
+name: cross browser end-to-end testing 🚀
 
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
   pull_request:
     types: [opened, reopened]
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 2 * * FRI'
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 5
 
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
 
-      - name: Install Docker Compose
-        run: sudo apt-get update && sudo apt-get install docker-compose -y
-
       - name: Run docker-compose 🐳
         run: docker-compose up -d e2e-chrome e2e-firefox e2e-edge e2e-electron
 
       - name: Wait for services to start ⏱️
-        run: sleep 20
+        run: docker-compose logs -f
 
       - name: Upload Chrome artifacts 📸
         uses: actions/upload-artifact@v3
@@ -41,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: firefox-artifacts
-          path: |
+          path:
             ./artifacts/firefox/screenshots
           if-no-files-found: ignore
           retention-days: 5
