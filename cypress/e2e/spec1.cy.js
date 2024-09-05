@@ -1,25 +1,41 @@
-describe('Testes da API de Cores', () => {
-  it('Deve retornar uma cor com o nome "fuchsia rose"', () => {
-    cy.request('https://reqres.in/api/unknown/2')
-      .its('status')
-      .should('equal', 200) // Verifica se a resposta da API é bem-sucedida
+describe('Login', () => {
 
-    cy.request('https://reqres.in/api/unknown/2')
-      .its('body.data')
-      .should('have.property', 'name', 'fuchsia rose') // Verifica se a cor retornada tem o nome "fuchsia rose"
+  beforeEach(() => {
+    // Arrange
+    cy.visit('https://www.saucedemo.com/')
   })
 
-  it('Deve conter a URL de suporte e um texto de apoio', () => {
-    cy.request('https://reqres.in/api/unknown/2')
-      .its('status')
-      .should('equal', 200) // Verifica se a resposta da API é bem-sucedida
+  it('Realizar login com sucesso', () => {
+    // Act
+    cy.get('[data-test="username"]').type('standard_user')
 
-    cy.request('https://reqres.in/api/unknown/2')
-      .its('body.support')
-      .should('have.property', 'url') // Verifica se a resposta contém uma URL de suporte
+    cy.get('[data-test=password]').type('secret_sauce')
 
-    cy.request('https://reqres.in/api/unknown/2')
-      .its('body.support')
-      .should('have.property', 'text') // Verifica se a resposta contém um texto de apoio
+    cy.get('[data-test="login-button"]').click()
+
+    // Assert
+    cy.url().should('eq', 'https://www.saucedemo.com/inventory.html')
+
+    cy.screenshot('login')
+  })
+
+  it('Realizar login informando credenciais inválidas', () => {
+    // Act
+    cy.get('[data-test="username"]').type('user.invalid')
+
+    cy.get('[data-test=password]').type('senha')
+
+    cy.get('[data-test="login-button"]').click()
+
+    // Assert
+    cy.get('[data-test="error"]')
+      .should(
+        'contain.text',
+        'Username and password do not match any user in this service'
+      )
+
+    cy.url().should('eq', 'https://www.saucedemo.com/')
+
+    cy.screenshot('erro credenciais inválidas')
   })
 })
