@@ -17,9 +17,9 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
-
-      - name: Run docker-compose 🐳
-        run: docker-compose up -d e2e-chrome e2e-firefox e2e-edge e2e-electron
+        
+      - name: Install Docker Compose
+        run: sudo apt-get update && sudo apt-get install docker-compose -y
 
       - name: Wait for services to start ⏱️
         run: docker-compose logs -f
